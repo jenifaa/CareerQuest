@@ -3,7 +3,7 @@ import { CgProfile } from "react-icons/cg";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   console.log(user);
   return (
     <div className="navbar bg-base-100 w-11/12 mx-auto font2 py-5 mb-10">
@@ -72,8 +72,11 @@ const Navbar = () => {
         <div>
           <CgProfile className="text-5xl mr-3" />
         </div>
-        <Link className="px-4 py-2 bg-[#E6533C] text-white font-bold mr-3" to="/login">Login</Link>
-        <Link className="px-4 py-2 bg-[#E6533C] text-white font-bold" to="/register">Register</Link>
+        {
+          user && user?.email ? (<button onClick={logOut} className="px-4 py-2 bg-[#E6533C] text-white font-bold mr-3">LogOut</button>) : (<><Link className="px-4 py-2 bg-[#E6533C] text-white font-bold  mr-3" to="/register">Register</Link><Link className="px-4 py-2 bg-[#E6533C] text-white font-bold" to="/login">Login</Link></>)
+        }
+       
+        
        
       </div>
     </div>

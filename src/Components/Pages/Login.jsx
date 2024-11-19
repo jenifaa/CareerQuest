@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
@@ -9,14 +11,16 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    console.log(email, password, name);
     userLogin(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
+        toast.success('Login Successfully!!!')
       })
       .catch((error) => {
-        console.log("Error", error.message);
+        toast.error('Invalid email or Password')
+        // console.log("Error", error.message);
       });
   };
   return (
@@ -28,17 +32,6 @@ const Login = () => {
           Login to your Account
         </h2>
           <form onSubmit={handleSubmit} className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="input input-bordered"
-                required
-              />
-            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
