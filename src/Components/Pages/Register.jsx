@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { useContext } from "react";
 import icon from "../../assets/google.png";
 import Navbar from "./Navbar";
 
 const Register = () => {
-  const { newUser, setUser } = useContext(AuthContext);
+  const { newUser, setUser , updateUserProfile} = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -19,6 +20,13 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        updateUserProfile({displayName: name, photoURL: photo})
+        .then(() => {
+          navigate("/");
+        })
+        .catch(err => {
+          console.log("error", err);
+        })
         console.log(user);
       })
       .catch((error) => {

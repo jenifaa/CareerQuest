@@ -2,10 +2,11 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
+  const [error, setError] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -19,21 +20,21 @@ const Login = () => {
         const user = result.user;
         setUser(user);
         navigate(location?.state ? location.state : "/");
-        toast.success('Login Successfully!!!')
+        toast.success("Login Successfully!!!");
       })
-      .catch((error) => {
-        toast.error('Invalid email or Password')
+      .catch((err) => {
+        setError({ ...error, login: err.code });
+        toast.error("Invalid email or Password");
         // console.log("Error", error.message);
       });
   };
   return (
     <div>
       <div className="hero bg-base-200 min-h-screen">
-       
         <div className="card bg-base-100 w-5/12 mx-auto">
-        <h2 className="text-3xl font-bold my-5 text-center">
-          Login to your Account
-        </h2>
+          <h2 className="text-3xl font-bold my-5 text-center">
+            Login to your Account
+          </h2>
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -58,6 +59,7 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
+              {error.login && <label className="label">{error.login}</label>}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?

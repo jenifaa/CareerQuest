@@ -84,9 +84,12 @@ const Navbar = () => {
 
 
       <div className="navbar-end">
-        <div>
-          <CgProfile className="text-5xl mr-3" />
-        </div>
+        {
+          user && user?.email ? (<div><img className="w-12 h-12 rounded-full mr-3" src={user?.photoURL} alt="" /></div>) : 
+          (<CgProfile className="text-5xl mr-3" />)
+       
+        }
+       
         {user && user?.email ? (
           <button
             onClick={logOut}
