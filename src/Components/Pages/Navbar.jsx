@@ -55,9 +55,9 @@ const Navbar = () => {
           <NavLink className="mr-4" to="/">
             Home
           </NavLink>
-          {/* <NavLink className="mr-4" to="/register">
+          <NavLink className="mr-4" to="/register">
            Register
-          </NavLink> */}
+          </NavLink>
           <NavLink className="mr-4" to="/about">
             About us
           </NavLink>
@@ -81,6 +81,7 @@ const Navbar = () => {
       ) : (
         ""
       )}
+
 
       <div className="navbar-end">
         <div>

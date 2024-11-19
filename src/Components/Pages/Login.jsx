@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +18,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        navigate(location?.state ? location.state : "/");
         toast.success('Login Successfully!!!')
       })
       .catch((error) => {
@@ -65,7 +68,7 @@ const Login = () => {
               <button className="btn bg-[#E6533C] text-base-200">Login</button>
             </div>
             <p>
-              New to this website? please <Link to="/login">Register</Link>
+              New to this website? please <Link to="/register">Register</Link>
             </p>
           </form>
         </div>

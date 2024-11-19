@@ -17,6 +17,7 @@ import AboutUs from "./Components/Pages/AboutUs";
 
 import All from "./Components/Pages/All";
 import CardsDetails from "./Components/Pages/CardsDetails";
+import PrivateRoutes from "./Components/Routes/PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -36,29 +37,37 @@ const router = createBrowserRouter([
   },
   {
     path: "/card/:id",
-    element: <CardsDetails></CardsDetails>,
+    element: <PrivateRoutes><CardsDetails></CardsDetails></PrivateRoutes>,
     loader: () => fetch('/allData.json')
    
   },
   {
     path: "cards",
     element: <All></All>,
-    loader: () => fetch(`allData.json`),
+    loader: () => fetch('allData.json'),
+  },
+  // {
+  //   path: "auth",
+  //   element: <AuthLayOut></AuthLayOut>,
+  //   children: [
+  //     {
+  //       path: "login",
+  //       element: <Login></Login>,
+  //     },
+  //     {
+  //       path: "register",
+  //       element: <Register></Register>,
+  //     },
+  //   ],
+  // },
+  {
+    path: 'login',
+    element: <Login></Login>
   },
   {
-    path: "auth",
-    element: <AuthLayOut></AuthLayOut>,
-    children: [
-      {
-        path: "login",
-        element: <Login></Login>,
-      },
-      {
-        path: "register",
-        element: <Register></Register>,
-      },
-    ],
-  },
+    path: 'register',
+    element: <Register></Register>
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(
