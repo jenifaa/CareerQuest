@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
+
 const Card = ({ card }) => {
   const { image, serviceName, category, pricing, counselor } = card;
   return (
-    <div className="card bg-base-100 w-full shadow-xl">
+    <div className="card bg-base-100 shadow-xl">
       <figure className="px-5 pt-5">
         <img
           src={image}
           alt={serviceName}
-          className="rounded-xl h-[400px] w-full"
+          className="rounded-xl h-[300px] w-[250px]"
         />
       </figure>
       <div className="card-body ">
@@ -20,7 +22,7 @@ const Card = ({ card }) => {
        <p>Rating</p>
        </div>
         <div className="card-actions mt-2">
-          <button className="btn bg-[#E6533C] text-base-200">Learn More</button>
+          <Link to={`/card/${card.id}`}  className="btn bg-[#E6533C] text-base-200">Learn More</Link>
         </div>
       </div>
     </div>

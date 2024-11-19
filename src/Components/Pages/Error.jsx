@@ -1,10 +1,10 @@
-
 const Error = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <h2>404</h2>
+      <p>OOPs!!!</p>
+    </div>
+  );
 };
 
 export default Error;

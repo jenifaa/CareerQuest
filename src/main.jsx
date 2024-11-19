@@ -12,6 +12,11 @@ import Cards from "./Components/Pages/Cards";
 import Card from "./Components/Pages/Card";
 import Login from "./Components/Pages/Login";
 import Register from "./Components/Pages/Register";
+import AuthLayOut from "./Components/Main/AuthLayOut";
+import AboutUs from "./Components/Pages/AboutUs";
+
+import All from "./Components/Pages/All";
+import CardsDetails from "./Components/Pages/CardsDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,14 +29,34 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "about",
+        element: <AboutUs></AboutUs>,
+      },
+    ],
+  },
+  {
+    path: "/card/:id",
+    element: <CardsDetails></CardsDetails>,
+    loader: () => fetch('/allData.json')
+   
+  },
+  {
+    path: "cards",
+    element: <All></All>,
+    loader: () => fetch(`allData.json`),
+  },
+  {
+    path: "auth",
+    element: <AuthLayOut></AuthLayOut>,
+    children: [
+      {
         path: "login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "register",
-        element: <Register></Register>
-      }
-   
+        element: <Register></Register>,
+      },
     ],
   },
 ]);

@@ -1,10 +1,13 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CgProfile } from "react-icons/cg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   console.log(user);
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <div className="navbar bg-base-100 w-11/12 mx-auto font2 py-5 mb-10">
       <div className="navbar-start">
@@ -29,20 +32,22 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-             <NavLink className="mr-4" to="/">
-            Home
-          </NavLink>
-          <NavLink className="mr-4" to="/register">
+            <NavLink className="mr-4" to="/">
+              Home
+            </NavLink>
+            {/* <NavLink className="mr-4" to="/register">
            Register
-          </NavLink>
-          <NavLink className="mr-4" to="/login">
-           Login
-          </NavLink>
-          <NavLink className="mr-6" to="">secret</NavLink>
+          </NavLink> */}
+            <NavLink className="mr-4" to="/about">
+              About us
+            </NavLink>
+            <NavLink className="mr-6" to="">
+              secret
+            </NavLink>
           </ul>
         </div>
-        <Link to="/" className="text-2xl  font-semibold">
-          <span className="text-[#E6533C] font-bold">G</span>oalPath
+        <Link to="/" className="text-3xl  font-bold font">
+          <span className="text-[#E6533C] font-bold ">G</span>oalPath
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -50,34 +55,60 @@ const Navbar = () => {
           <NavLink className="mr-4" to="/">
             Home
           </NavLink>
-          <NavLink className="mr-4" to="/register">
+          {/* <NavLink className="mr-4" to="/register">
            Register
+          </NavLink> */}
+          <NavLink className="mr-4" to="/about">
+            About us
           </NavLink>
-          <NavLink className="mr-4" to="/login">
-           Login
+          <NavLink className="mr-6" to="">
+            secret
           </NavLink>
-          <NavLink className="mr-6" to="">secret</NavLink>
         </ul>
       </div>
 
-      <div className="form-control">
-        <input
-          type="text"
-          placeholder="Search"
-          className="input input-bordered w-24 md:w-auto"
-        />
-      </div>
+      {location.pathname === "/cards" ? (
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="Search"
+            //   value={searchQuery}
+            // onChange={(e) => setSearchQuery(e.target.value)}
+
+            className="input input-bordered w-24 md:w-auto"
+          />
+        </div>
+      ) : (
+        ""
+      )}
 
       <div className="navbar-end">
         <div>
           <CgProfile className="text-5xl mr-3" />
         </div>
-        {
-          user && user?.email ? (<button onClick={logOut} className="px-4 py-2 bg-[#E6533C] text-white font-bold mr-3">LogOut</button>) : (<><Link className="px-4 py-2 bg-[#E6533C] text-white font-bold  mr-3" to="/register">Register</Link><Link className="px-4 py-2 bg-[#E6533C] text-white font-bold" to="/login">Login</Link></>)
-        }
-       
-        
-       
+        {user && user?.email ? (
+          <button
+            onClick={logOut}
+            className="px-4 py-2 bg-[#E6533C] text-white font-bold mr-3"
+          >
+            LogOut
+          </button>
+        ) : (
+          <>
+            <Link
+              className="px-4 py-2 bg-[#E6533C] text-white font-bold  mr-3"
+              to="/register"
+            >
+              Register
+            </Link>
+            <Link
+              className="px-4 py-2 bg-[#E6533C] text-white font-bold"
+              to="/login"
+            >
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

@@ -3,8 +3,10 @@ import Footer from "../Pages/Footer";
 import Header from "../Pages/Header";
 import Navbar from "../Pages/Navbar";
 import { ToastContainer, toast } from 'react-toastify';
-
+import { Helmet } from "react-helmet";
+import { useState } from "react";
 const MainLayOut = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   return (
     <div>
        <ToastContainer 
