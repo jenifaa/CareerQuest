@@ -67,7 +67,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-200 pt-5">
       <Navbar></Navbar>
       <div className="hero  min-h-screen">
         <div className="card bg-base-100 lg:w-5/12 mx-auto">

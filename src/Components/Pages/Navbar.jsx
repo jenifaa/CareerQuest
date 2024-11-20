@@ -2,31 +2,41 @@ import { useContext, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+
 const Navbar = () => {
   const { user, logOut, updateUserProfile } = useContext(AuthContext);
+
   // updateUserProfile()
   console.log(user);
   const location = useLocation();
   const navigate = useNavigate();
+  const isHomePage = location.pathname === "/";
+
   const links = (
-    <>
-      <NavLink className="mr-4" to="/">
+    <div className="bg-slate-700 text-white px-8 py-4 rounded-full">
+      <NavLink className="mr-4 font-bold" to="/">
         Home
       </NavLink>
-      <NavLink className="mr-4" to="/register">
-        Register
-      </NavLink>
-      <NavLink className="mr-4" to="/about">
+      <NavLink className="mr-4 font-bold" to="/about">
         About us
       </NavLink>
-      <NavLink className="mr-6" to="">
-        secret
+      <NavLink className="mr-4 font-bold" to="/dashboard">
+        DashBoard
       </NavLink>
-    </>
+      {user && user?.email ? (
+        <>
+          <NavLink className=" font-bold" to="/offer">
+            Offers
+          </NavLink>
+        </>
+      ) : (
+        ""
+      )}
+    </div>
   );
 
   return (
-    <div className="navbar bg-base-100 w-11/12 mx-auto font2 py-5 mb-10">
+    <div className="navbar bg-base-100 w-11/12 mx-auto pt-5 rounded-xl font2 py-5 px-3 mb-20">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,7 +57,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content  z-[1] mt-3 w-60 p-2 shadow"
           >
             {links}
           </ul>
@@ -57,13 +67,15 @@ const Navbar = () => {
           data-aos-duration="1000" // Set animation duration (1s)
           data-aos-easing="ease-in-out"
           to="/"
-          className="text-3xl  font-bold font"
+          className="text-5xl  font-bold font"
         >
           <span className="text-[#E6533C] font-bold ">G</span>oalPath
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal  border-2 rounded-full px-2 py-2">
+          {links}
+        </ul>
       </div>
 
       {location.pathname === "/cards" ? (
@@ -83,8 +95,8 @@ const Navbar = () => {
 
       <div
         className="navbar-end"
-        data-aos="fade-left" // Add AOS animation type
-        data-aos-duration="1000" // Set animation duration (1s)
+        data-aos="fade-left"
+        data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >
         {user && user?.photoURL ? (
@@ -104,13 +116,13 @@ const Navbar = () => {
           <div className=" lg:flex ml-3 items-center gap-3">
             <button
               onClick={logOut}
-              className="px-4 py-2 bg-[#E6533C] text-white font-bold "
+              className="px-4 py-2 bg-slate-700 text-white font-bold "
             >
               LogOut
             </button>
             <Link
               to="/update"
-              className="px-4 py-2 bg-[#E6533C] text-white font-bold "
+              className="px-4 py-2 bg-slate-700 text-white font-bold sm:ml-3"
             >
               Update
             </Link>
@@ -118,13 +130,13 @@ const Navbar = () => {
         ) : (
           <>
             <Link
-              className="px-4 py-2 bg-[#E6533C] text-white font-bold  mr-3"
+              className="px-4 py-2 bg-slate-700 text-white font-bold  mr-3"
               to="/register"
             >
               Register
             </Link>
             <Link
-              className="px-4 py-2 bg-[#E6533C] text-white font-bold"
+              className="px-4 py-2 bg-slate-700 text-white font-bold"
               to="/login"
             >
               Login

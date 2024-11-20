@@ -7,9 +7,7 @@ const UpdateProfile = () => {
   const {updateUserProfile} = useContext(AuthContext);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const handlePage = () =>{
-    // navigate('/');
-  }
+  
     const handleSubmit = e =>{
         e.preventDefault();
         const name = e.target.name.value;
@@ -18,13 +16,16 @@ const UpdateProfile = () => {
         updateUserProfile({displayName: name, photoURL: photo})
         .then((result) =>{
            console.log(result.user);
+          
         })
         .catch((error) => {
           setMessage(`Error: ${error.message}`);
         });
+        navigate('/');
     
         console.log( name, photo);
     }
+   
   return (
     <div>
         <Navbar></Navbar>
@@ -58,7 +59,7 @@ const UpdateProfile = () => {
             </div>
            
            
-           <button onClick={handlePage} className="bg-slate-800 px-4 py-3 text-white font-semibold rounded-lg my-4">Update</button>
+           <button  className="bg-slate-800 px-4 py-3 text-white font-semibold rounded-lg my-4">Update</button>
           </form>
           
           

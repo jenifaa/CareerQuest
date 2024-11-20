@@ -24,7 +24,7 @@ const CardsDetails = () => {
     pricing,
   } = card;
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="w-10/12 mx-auto mb-24">
         <Header></Header>
         <Navbar></Navbar>
       <div className=" grid grid-cols-9 gap-10 items-center mt-5">
@@ -45,7 +45,7 @@ const CardsDetails = () => {
           
           <div className="flex justify-between items-center my-5">
             <p className="text-lg font-bold text-green-500"> <span className="font-bold text-black">Duration:</span> {duration}</p>
-            <p>{availability}</p>
+            <p className="text-white bg-green-500 px-2 py-1 rounded-full">{availability}</p>
           </div>
           <div className=" mt-2">
             <input type="text" placeholder="FeedBack" className="w-80 h-32 border-2 rounded-lg p-4"/>

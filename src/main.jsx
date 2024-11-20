@@ -13,12 +13,15 @@ import Card from "./Components/Pages/Card";
 import Login from "./Components/Pages/Login";
 import Register from "./Components/Pages/Register";
 import AuthLayOut from "./Components/Main/AuthLayOut";
-import AboutUs from "./Components/Pages/AboutUs";
+
 
 import All from "./Components/Pages/All";
 import CardsDetails from "./Components/Pages/CardsDetails";
 import PrivateRoutes from "./Components/Routes/PrivateRoutes";
 import UpdateProfile from "./Components/Pages/UpdateProfile";
+import Offer from "./Components/Pages/Offer";
+import Dashboard from "./Components/Pages/Dashboard";
+import AboutUs from "./Components/Pages/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -30,10 +33,19 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      
       {
-        path: "about",
-        element: <AboutUs></AboutUs>,
+        path: "offer",
+        element: <Offer></Offer>
       },
+      {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>
+      },
+      {
+        path: 'about',
+        element: <AboutUs></AboutUs>
+      }
     ],
   },
   {

@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
+import { Rating, ThinStar } from "@smastrom/react-rating";
+
+import "@smastrom/react-rating/style.css";
+import { useState } from "react";
 
 const Card = ({ card }) => {
+  const myStyles = {
+    itemShapes: ThinStar,
+    activeFillColor: '#ffb700',
+    inactiveFillColor: '#fbf1a9'
+  }
   const { image, serviceName, category, pricing, counselor, rating } = card;
+  const [ratings, setRatings] = useState(rating);
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure className="px-5 pt-5">
@@ -17,12 +27,23 @@ const Card = ({ card }) => {
           <p className="text-gray-500">({category})</p>
         </div>
         <p className="font-semibold">Counselor: {counselor}</p>
-       <div className="flex justify-between items-center">
-       <p className="text-lg font-bold text-green-500">{pricing}</p>
-       <p>{rating}</p>
-       </div>
+        <div className="flex justify-between items-center">
+          <p className="text-lg font-bold text-green-500">{pricing}</p>
+          <Rating className=""
+            style={{ maxWidth: 90}}
+            value={rating}
+            readOnly
+            itemStyles={myStyles}
+           
+          />({rating})
+        </div>
         <div className="card-actions mt-2">
-          <Link to={`/card/${card.id}`}  className="btn bg-[#E6533C] text-base-200">Learn More</Link>
+          <Link
+            to={`/card/${card.id}`}
+            className="btn bg-slate-800 text-base-200"
+          >
+            Learn More
+          </Link>
         </div>
       </div>
     </div>
