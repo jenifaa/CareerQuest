@@ -18,6 +18,7 @@ import AboutUs from "./Components/Pages/AboutUs";
 import All from "./Components/Pages/All";
 import CardsDetails from "./Components/Pages/CardsDetails";
 import PrivateRoutes from "./Components/Routes/PrivateRoutes";
+import UpdateProfile from "./Components/Pages/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,8 @@ const router = createBrowserRouter([
   },
   {
     path: "cards",
-    element: <All></All>,
+    element: <PrivateRoutes><All></All></PrivateRoutes>,
+    // element: <All></All>,
     loader: () => fetch('allData.json'),
   },
   // {
@@ -67,6 +69,10 @@ const router = createBrowserRouter([
   {
     path: 'register',
     element: <Register></Register>
+  },
+  {
+    path: 'update',
+    element: <UpdateProfile></UpdateProfile>
   }
 ]);
 

@@ -3,10 +3,27 @@ import { CgProfile } from "react-icons/cg";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, updateUserProfile } = useContext(AuthContext);
+  // updateUserProfile()
   console.log(user);
   const location = useLocation();
   const navigate = useNavigate();
+  const links = (
+    <>
+      <NavLink className="mr-4" to="/">
+        Home
+      </NavLink>
+      <NavLink className="mr-4" to="/register">
+        Register
+      </NavLink>
+      <NavLink className="mr-4" to="/about">
+        About us
+      </NavLink>
+      <NavLink className="mr-6" to="">
+        secret
+      </NavLink>
+    </>
+  );
 
   return (
     <div className="navbar bg-base-100 w-11/12 mx-auto font2 py-5 mb-10">
@@ -32,39 +49,21 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <NavLink className="mr-4" to="/">
-              Home
-            </NavLink>
-            {/* <NavLink className="mr-4" to="/register">
-           Register
-          </NavLink> */}
-            <NavLink className="mr-4" to="/about">
-              About us
-            </NavLink>
-            <NavLink className="mr-6" to="">
-              secret
-            </NavLink>
+            {links}
           </ul>
         </div>
-        <Link to="/" className="text-3xl  font-bold font">
+        <Link
+          data-aos="fade-right" // Add AOS animation type
+          data-aos-duration="1000" // Set animation duration (1s)
+          data-aos-easing="ease-in-out"
+          to="/"
+          className="text-3xl  font-bold font"
+        >
           <span className="text-[#E6533C] font-bold ">G</span>oalPath
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <NavLink className="mr-4" to="/">
-            Home
-          </NavLink>
-          <NavLink className="mr-4" to="/register">
-           Register
-          </NavLink>
-          <NavLink className="mr-4" to="/about">
-            About us
-          </NavLink>
-          <NavLink className="mr-6" to="">
-            secret
-          </NavLink>
-        </ul>
+        <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
       {location.pathname === "/cards" ? (
@@ -82,21 +81,40 @@ const Navbar = () => {
         ""
       )}
 
+      <div
+        className="navbar-end"
+        data-aos="fade-left" // Add AOS animation type
+        data-aos-duration="1000" // Set animation duration (1s)
+        data-aos-easing="ease-in-out"
+      >
+        {user && user?.photoURL ? (
+          <div>
+            <img
+              className="w-12 h-12 rounded-full mr-3 "
+              src={user?.photoURL}
+              title={user?.displayName || "User"}
+              alt=""
+            />
+          </div>
+        ) : (
+          <CgProfile className="text-5xl mr-3" />
+        )}
 
-      <div className="navbar-end">
-        {
-          user && user?.email ? (<div><img className="w-12 h-12 rounded-full mr-3" src={user?.photoURL} alt="" /></div>) : 
-          (<CgProfile className="text-5xl mr-3" />)
-       
-        }
-       
         {user && user?.email ? (
-          <button
-            onClick={logOut}
-            className="px-4 py-2 bg-[#E6533C] text-white font-bold mr-3"
-          >
-            LogOut
-          </button>
+          <div className=" lg:flex ml-3 items-center gap-3">
+            <button
+              onClick={logOut}
+              className="px-4 py-2 bg-[#E6533C] text-white font-bold "
+            >
+              LogOut
+            </button>
+            <Link
+              to="/update"
+              className="px-4 py-2 bg-[#E6533C] text-white font-bold "
+            >
+              Update
+            </Link>
+          </div>
         ) : (
           <>
             <Link

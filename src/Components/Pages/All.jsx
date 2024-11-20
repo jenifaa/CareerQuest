@@ -21,7 +21,7 @@ const All = () => {
             Find Your Perfect Guide
           </h2>
           <Navbar></Navbar>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5'>
                 {
                     allData.map((card) => <Card card={card} key={card.id}></Card>)
                 }

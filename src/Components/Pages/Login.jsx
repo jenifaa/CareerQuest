@@ -1,12 +1,28 @@
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaEye } from "react-icons/fa";
+import icon from "../../assets/google.png";
+import { sendPasswordResetEmail } from "firebase/auth";
+import auth from "../firebase.init";
 
 const Login = () => {
-  const { userLogin, setUser } = useContext(AuthContext);
-  const [error, setError] = useState({});
+  const { userLogin, setUser ,signInWithGoogle } = useContext(AuthContext);
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+ 
+  const [error, setError] = useState([]);
+  const emailRef = useRef();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -14,7 +30,7 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password, name);
+    console.log(email, password);
     userLogin(email, password)
       .then((result) => {
         const user = result.user;
@@ -28,10 +44,35 @@ const Login = () => {
         // console.log("Error", error.message);
       });
   };
+  const handleForgetPassword =() =>{
+    console.log(emailRef.current.value);
+    const email = emailRef.current.value;
+   if(!email){
+    console.log("please provide a valid email address");
+   }
+   else{
+    sendPasswordResetEmail(auth, email)
+    .then(() =>{
+      toast.error('please check your email')
+    })
+   }
+  }
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="hero bg-base-200 min-h-screen">
-        <div className="card bg-base-100 w-5/12 mx-auto">
+        <div className="card bg-base-100 lg:w-5/12 mx-auto">
           <h2 className="text-3xl font-bold my-5 text-center">
             Login to your Account
           </h2>
@@ -41,6 +82,7 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+              ref={emailRef}
                 name="email"
                 type="email"
                 placeholder="email"
@@ -60,8 +102,8 @@ const Login = () => {
                 required
               />
               {error.login && <label className="label">{error.login}</label>}
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+              <label onClick={handleForgetPassword} className="label">
+                <a href="https://mail.google.com/mail/u/0/#inbox" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
               </label>
@@ -73,6 +115,15 @@ const Login = () => {
               New to this website? please <Link to="/register">Register</Link>
             </p>
           </form>
+          <div className="mb-2 ml-5  rounded-full lg:w-[38%] ">
+            <button
+              onClick={handleGoogleSignIn}
+              className=" font-semibold flex justify-around items-center border-2 p-3 rounded-full "
+            >
+              <img src={icon} alt="" className="w-8 mr-3" />
+              <p>Sign In with Google</p>
+            </button>
+          </div>
         </div>
       </div>
     </div>
