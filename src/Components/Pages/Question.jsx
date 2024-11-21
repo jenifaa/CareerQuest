@@ -22,12 +22,12 @@ const Question = () => {
     <div>
       <div className="text-center text-4xl my-5 font-bold">Enrich Your <span className="font text-7xl text-[#E6533C]">K</span>nowledge</div>
       <p className="mb-5 text-sm text-gray-500 text-center">Unlock New Perspectives, Enhance Skills, and Foster Continuous Growth</p>
-      <div className="w-11/12 mx-auto my-20 grid grid-cols-10 bg-base-200 p-10">
+      <div className="w-11/12 mx-auto my-20 grid md:grid-cols-10 bg-base-200 p-10">
         <div
           data-aos="fade-right"
           data-aos-duration="2000"
           data-aos-easing="ease-in-out"
-          className="text-5xl font-bold col-span-5"
+          className="text-5xl font-bold md:col-span-5"
         >
           Career Counseling FA<span className="text-[#E6533C]">Q</span>s
         </div>
@@ -35,7 +35,7 @@ const Question = () => {
           data-aos="fade-left"
           data-aos-duration="3000"
           data-aos-easing="ease-in-out"
-          className="col-span-5"
+          className="md:col-span-5"
         >
           <p className="font-bold text-2xl my-2">What is career counseling?</p>
           <p className="text-gray-700">

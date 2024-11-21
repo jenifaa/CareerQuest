@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet";
+
 const AboutUs = () => {
   return (
     <div className="mx-auto w-10/12">
+        <Helmet>
+            <title>About Us</title>
+        </Helmet>
       <div className="my-5">
         <h2 className="font-bold text-3xl my-4">About Us</h2>
         <p>
@@ -20,7 +25,7 @@ const AboutUs = () => {
         <p>
           At GoalPath, we offer a range of services designed to assist you in
           making informed career choices. Our offerings include:
-          <ol>
+          <ul>
             <li>
               Personalized Career Counseling: One-on-one sessions to help you
               discover your strengths, interests, and career path.
@@ -42,7 +47,7 @@ const AboutUs = () => {
               industries, we offer guidance on how to make a smooth and
               successful transition.
             </li>
-          </ol>
+          </ul>
         </p>
       </div>
       <div className="my-5">

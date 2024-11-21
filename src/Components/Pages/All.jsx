@@ -8,9 +8,7 @@ const All = () => {
     const allData = useLoaderData();
     const [allCard, setAllCard] = useState([]);
    
-    console.log(allCard);
-    console.log(allData);
-
+    
 
 
     

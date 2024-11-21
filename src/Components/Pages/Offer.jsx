@@ -5,12 +5,16 @@ import icon4 from "../../assets/coupon.png";
 import icon5 from "../../assets/discount (1).png";
 import icon6 from "../../assets/discount.png";
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Offer = () => {
   const navigate = useNavigate();
 
   return (
     <div className="mx-auto w-10/12">
+        <Helmet>
+            <title>CareerQuery | Offers</title>
+        </Helmet>
       <div className="text-center my-5 mb-10">
         <h1 className="text-5xl font-bold my-4 flex items-center justify-center">
           Exclusive Offers <img className="w-16 ml-3" src={icon4} alt="" />
@@ -19,15 +23,15 @@ const Offer = () => {
           Unlock Amazing Discounts & Deals Just for You!
         </p>{" "}
       </div>
-      <div className="grid grid-cols-10 my-5 items-center mt-10">
-        <div className="col-span-4 text-3xl font-bold">
+      <div className="grid md:grid-cols-10 my-5 items-center mt-10">
+        <div className="md:col-span-4 text-3xl font-bold">
           Offer's for TeenAge Students
         </div>
         <div
           data-aos="fade-left"
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
-          className="col-span-6 flex gap-5"
+          className="md:col-span-6 md:flex gap-5"
         >
           <div className="card bg-base-100 w-96 shadow-xl">
             <div className="card-body">
@@ -65,15 +69,15 @@ const Offer = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-10 my-5 items-center">
-        <div className="col-span-4 text-3xl font-bold">
+      <div className="grid md:grid-cols-10 my-5 items-center">
+        <div className="md:col-span-4 text-3xl font-bold">
           Offer's for College Students
         </div>
         <div
           data-aos="fade-left"
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
-          className="col-span-6 flex gap-5"
+          className="md:col-span-6 md:flex gap-5"
         >
           <div className="card bg-base-100 w-96 shadow-xl">
             <div className="card-body">
@@ -109,15 +113,15 @@ const Offer = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-10 my-5 items-center">
-        <div className="col-span-4 text-3xl font-bold">
+      <div className="grid md:grid-cols-10 my-5 items-center">
+        <div className="md:col-span-4 text-3xl font-bold">
           Offer's for Job Candidates
         </div>
         <div
           data-aos="fade-left"
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
-          className="col-span-6 flex gap-5"
+          className="md:col-span-6 md:flex gap-5"
         >
           <div className="card bg-base-100 w-96 shadow-xl">
             <div className="card-body">
@@ -154,15 +158,15 @@ const Offer = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-10 items-center">
-        <div className="col-span-4 text-3xl font-bold">
+      <div className="grid md:grid-cols-10 items-center">
+        <div className="md:col-span-4 text-3xl font-bold">
           Offer's for Generals
         </div>
         <div
           data-aos="fade-left"
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
-          className="col-span-6 flex gap-5"
+          className="md:col-span-6 md:flex gap-5"
         >
           <div className="card bg-base-100 w-96 shadow-xl">
             <div className="card-body">

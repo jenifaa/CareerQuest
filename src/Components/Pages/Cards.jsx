@@ -4,15 +4,14 @@ import { AuthContext } from "./AuthProvider";
 import Card from "./Card";
 
 const Cards = () => {
-  // const data = useLoaderData();
-  // console.log(data);
+ 
   const [all, setAll] = useState([]);
   useEffect(() => {
     fetch("allData.json")
       .then((res) => res.json())
       .then((data) => setAll(data));
   }, []);
-  console.log(all);
+  
 
   const { user } = useContext(AuthContext);
 

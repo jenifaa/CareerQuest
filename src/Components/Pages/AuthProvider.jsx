@@ -32,51 +32,11 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, updatedData)
   }
 
-  // const updateUserProfile = async (name, photoURL) => {
-   
-  //   if (auth.currentUser) {
-  //     try {
-  //       await updateProfile(auth.currentUser, {
-  //         displayName: name,
-  //         photoURL: photoURL,
-  //       });
-  //       setUser({ ...auth.currentUser, displayName: name, photoURL: photoURL });
-  //       return Promise.resolve("Profile updated successfully");
-  //     } catch (error) {
-  //       return Promise.reject(error.message);
-  //     }
-  //   } else {
-  //     return Promise.reject("No user logged in");
-  //   }
-  // };
-
-
-
-
-  // const updateUserProfile = (name, photoURL) => {
-  //   const auth = getAuth();
-  //   if (auth.currentUser) {
-  //     return updateProfile(auth.currentUser, {
-  //       displayName: name,
-  //       photoURL: photoURL,
-  //     })
-  //       .then(() => {
-  //         setUser({ ...auth.currentUser, displayName: name, photoURL: photoURL });
-  //       })
-  //       .catch((error) => {
-  //         return Promise.reject(error.message);
-  //       });
-  //   } else {
-  //     return Promise.reject("No user logged in");
-  //   }
-  // };
   
-  
-
   const signInWithGoogle = () => {
     return signInWithPopup(auth, provider);
   };
-  console.log(user);
+  
   const authInfo = {
     user,
     setUser,

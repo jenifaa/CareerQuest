@@ -7,13 +7,14 @@ import { FaEye } from "react-icons/fa";
 import icon from "../../assets/google.png";
 import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase.init";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { userLogin, setUser ,signInWithGoogle } = useContext(AuthContext);
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+       
         navigate("/");
       })
       .catch((err) => {
@@ -30,25 +31,26 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    
     userLogin(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
-        navigate(location?.state ? location.state : "/");
         toast.success("Login Successfully!!!");
+        navigate(location?.state ? location.state : "/");
+        
       })
       .catch((err) => {
         setError({ ...error, login: err.code });
         toast.error("Invalid email or Password");
-        // console.log("Error", error.message);
+       
       });
   };
   const handleForgetPassword =() =>{
-    console.log(emailRef.current.value);
+    
     const email = emailRef.current.value;
    if(!email){
-    console.log("please provide a valid email address");
+    toast.error("please provide a valid email address");
    }
    else{
     sendPasswordResetEmail(auth, email)
@@ -59,6 +61,9 @@ const Login = () => {
   }
   return (
     <div>
+      <Helmet>
+            <title>CareerQuest | Login</title>
+        </Helmet>
       <ToastContainer
         position="top-center"
         autoClose={3000}

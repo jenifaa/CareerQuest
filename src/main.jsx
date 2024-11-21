@@ -14,7 +14,6 @@ import Login from "./Components/Pages/Login";
 import Register from "./Components/Pages/Register";
 import AuthLayOut from "./Components/Main/AuthLayOut";
 
-
 import All from "./Components/Pages/All";
 import CardsDetails from "./Components/Pages/CardsDetails";
 import PrivateRoutes from "./Components/Routes/PrivateRoutes";
@@ -22,6 +21,7 @@ import UpdateProfile from "./Components/Pages/UpdateProfile";
 import Offer from "./Components/Pages/Offer";
 import Dashboard from "./Components/Pages/Dashboard";
 import AboutUs from "./Components/Pages/AboutUs";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -33,64 +33,70 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
-      
+
       {
         path: "offer",
-        element: <Offer></Offer>
+        element: <Offer></Offer>,
       },
       {
-        path: 'dashboard',
-        element: <Dashboard></Dashboard>
+        path: "dashboard",
+        element: <Dashboard></Dashboard>,
       },
       {
-        path: 'about',
-        element: <AboutUs></AboutUs>
-      }
+        path: "about",
+        element: <AboutUs></AboutUs>,
+      },
     ],
   },
   {
     path: "/card/:id",
-    element: <PrivateRoutes><CardsDetails></CardsDetails></PrivateRoutes>,
-    loader: () => fetch('/allData.json')
-   
+    element: (
+      <PrivateRoutes>
+        <CardsDetails></CardsDetails>
+      </PrivateRoutes>
+    ),
+    loader: () => fetch("/allData.json"),
   },
   {
     path: "cards",
-    element: <PrivateRoutes><All></All></PrivateRoutes>,
-    // element: <All></All>,
-    loader: () => fetch('allData.json'),
+    element: (
+      <PrivateRoutes>
+        <All></All>
+      </PrivateRoutes>
+    ),
+
+    loader: () => fetch("allData.json"),
   },
-  // {
-  //   path: "auth",
-  //   element: <AuthLayOut></AuthLayOut>,
-  //   children: [
-  //     {
-  //       path: "login",
-  //       element: <Login></Login>,
-  //     },
-  //     {
-  //       path: "register",
-  //       element: <Register></Register>,
-  //     },
-  //   ],
-  // },
+
   {
-    path: 'login',
-    element: <Login></Login>
+    path: "login",
+    element: <Login></Login>,
   },
   {
-    path: 'register',
-    element: <Register></Register>
+    path: "register",
+    element: <Register></Register>,
   },
   {
-    path: 'update',
-    element: <UpdateProfile></UpdateProfile>
-  }
+    path: "update",
+    element: <UpdateProfile></UpdateProfile>,
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>

@@ -1,13 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import { onAuthStateChanged } from "firebase/auth";
+import auth from "../firebase.init";
+import Loading from "./Loading";
 
 const Navbar = () => {
-  const { user, logOut, updateUserProfile } = useContext(AuthContext);
+  const { user, logOut, updateUserProfile, setUser, loading } =
+    useContext(AuthContext);
+  // const [loading, setLoading] = useState(true)
 
-  // updateUserProfile()
-  console.log(user);
   const location = useLocation();
   const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
@@ -35,6 +38,10 @@ const Navbar = () => {
     </div>
   );
 
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
   return (
     <div className="navbar bg-base-100 w-11/12 mx-auto pt-5 rounded-xl font2 py-5 px-3 mb-20">
       <div className="navbar-start">
@@ -57,86 +64,79 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content  z-[1] mt-3 w-60 p-2 shadow"
+            className="menu menu-sm dropdown-content z-[1] mt-3 w-48 bg-slate-700 text-white rounded-lg shadow-lg"
           >
             {links}
           </ul>
         </div>
         <Link
-          data-aos="fade-right" // Add AOS animation type
-          data-aos-duration="1000" // Set animation duration (1s)
+          data-aos="fade-right"
+          data-aos-duration="1000"
           data-aos-easing="ease-in-out"
           to="/"
-          className="text-5xl  font-bold font"
+          className="text-3xl md:text-4xl font-bold font"
         >
-          <span className="text-[#E6533C] font-bold ">G</span>oalPath
+          <span className="text-[#E6533C] font-bold">G</span>oalPath
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal  border-2 rounded-full px-2 py-2">
+        <ul className="menu menu-horizontal border-2 rounded-full px-2 py-2">
           {links}
         </ul>
       </div>
 
-      {location.pathname === "/cards" ? (
-        <div className="form-control">
+      {location.pathname === "/cards" && (
+        <div className="form-control hidden md:block">
           <input
             type="text"
             placeholder="Search"
-            //   value={searchQuery}
-            // onChange={(e) => setSearchQuery(e.target.value)}
-
-            className="input input-bordered w-24 md:w-auto"
+            className="input input-bordered w-full md:w-auto"
           />
         </div>
-      ) : (
-        ""
       )}
 
       <div
-        className="navbar-end"
+        className="navbar-end flex items-center gap-3"
         data-aos="fade-left"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >
         {user && user?.photoURL ? (
-          <div>
-            <img
-              className="w-12 h-12 rounded-full mr-3 "
-              src={user?.photoURL}
-              title={user?.displayName || "User"}
-              alt=""
-            />
-          </div>
+          <img
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full hidden md:flex"
+            src={user?.photoURL}
+            title={user?.displayName || "User"}
+            alt="User Profile"
+          />
         ) : (
-          <CgProfile className="text-5xl mr-3" />
+          <CgProfile className="text-4xl md:text-5xl" />
         )}
 
         {user && user?.email ? (
-          <div className=" lg:flex ml-3 items-center gap-3">
+          <div className="flex items-center gap-3">
             <button
               onClick={logOut}
-              className="px-4 py-2 bg-slate-700 text-white font-bold "
+              className="px-4 py-2 bg-slate-700 text-white font-bold text-sm md:text-base"
             >
               LogOut
             </button>
             <Link
               to="/update"
-              className="px-4 py-2 bg-slate-700 text-white font-bold sm:ml-3"
+              className="px-4 py-2 bg-slate-700 text-white font-bold text-sm md:text-base"
             >
-              Update
+              User
             </Link>
           </div>
         ) : (
           <>
             <Link
-              className="px-4 py-2 bg-slate-700 text-white font-bold  mr-3"
+              className="px-4 py-2 bg-slate-700 text-white font-bold text-sm md:text-base"
               to="/register"
             >
               Register
             </Link>
             <Link
-              className="px-4 py-2 bg-slate-700 text-white font-bold"
+              className="px-4 py-2 bg-slate-700 text-white font-bold text-sm md:text-base"
               to="/login"
             >
               Login

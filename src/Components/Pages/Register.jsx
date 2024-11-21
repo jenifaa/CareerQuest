@@ -5,6 +5,9 @@ import icon from "../../assets/google.png";
 import Navbar from "./Navbar";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { newUser, setUser, updateUserProfile, signInWithGoogle } =
@@ -16,7 +19,7 @@ const Register = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        
         navigate("/");
       })
       .catch((err) => {
@@ -30,7 +33,7 @@ const Register = () => {
     const password = e.target.password.value;
     const photo = e.target.photo.value;
 
-    console.log(email, password, name, photo);
+   
     setError("");
     setSuccess(false);
     if (password.length < 6) {
@@ -42,9 +45,10 @@ const Register = () => {
     if (!passwordRegex.test(password)) {
       setError(
         <>Password should contains : <br /> (1) At-least one uppercase,<br /> (2) one lowercase,<br /> (3) one number and <br /> (4 )one special character,</>
-        // toast.error("Invalid Information")
+        
         
       );
+       toast.error("Invalid Information")
 
       return;
     }
@@ -55,9 +59,10 @@ const Register = () => {
         setUser(user);
         
         setSuccess(true);
+        toast.success('Registered Successfully')
         updateUserProfile({ displayName: name, photoURL: photo })
          
-        console.log(user);
+       
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
@@ -69,6 +74,9 @@ const Register = () => {
   return (
     <div className="bg-base-200 pt-5">
       <Navbar></Navbar>
+      <Helmet>
+            <title>CareerQuest | Register</title>
+        </Helmet>
       <div className="hero  min-h-screen">
         <div className="card bg-base-100 lg:w-5/12 mx-auto">
           <h2 className="text-3xl font-bold my-5 pl-8">Register</h2>
