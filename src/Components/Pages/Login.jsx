@@ -2,7 +2,7 @@ import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import icon from "../../assets/google.png";
 import { sendPasswordResetEmail } from "firebase/auth";

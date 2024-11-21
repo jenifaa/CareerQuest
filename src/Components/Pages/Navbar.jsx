@@ -71,7 +71,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link
-          data-aos="fade-right"
+          data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
           to="/"
@@ -98,7 +98,7 @@ const Navbar = () => {
 
       <div
         className="navbar-end flex items-center gap-3"
-        data-aos="fade-left"
+        data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >

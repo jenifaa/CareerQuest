@@ -7,7 +7,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 const Register = () => {
   const { newUser, setUser, updateUserProfile, signInWithGoogle } =
