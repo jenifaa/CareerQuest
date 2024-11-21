@@ -22,6 +22,7 @@ import Offer from "./Components/Pages/Offer";
 import Dashboard from "./Components/Pages/Dashboard";
 import AboutUs from "./Components/Pages/AboutUs";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {

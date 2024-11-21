@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import icon from "../../assets/google.png";
 import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase.init";
@@ -26,7 +26,8 @@ const Login = () => {
   const emailRef = useRef();
   const location = useLocation();
   const navigate = useNavigate();
-
+  const [showPassword, setShowPassword] = useState(false);
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -38,6 +39,7 @@ const Login = () => {
         setUser(user);
         toast.success("Login Successfully!!!");
         navigate(location?.state ? location.state : "/");
+       
         
       })
       .catch((err) => {
@@ -64,18 +66,7 @@ const Login = () => {
       <Helmet>
             <title>CareerQuest | Login</title>
         </Helmet>
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      
       <div className="hero bg-base-200 min-h-screen">
         <div className="card bg-base-100 lg:w-5/12 mx-auto">
           <h2 className="text-3xl font-bold my-5 text-center">
@@ -101,11 +92,17 @@ const Login = () => {
               </label>
               <input
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered "
                 required
               />
+              <button
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-12 top-[252px]"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye></FaEye>}
+              </button>
               {error.login && <label className="label">{error.login}</label>}
               <label onClick={handleForgetPassword} className="label">
                 <a href="https://mail.google.com/mail/u/0/#inbox" className="label-text-alt link link-hover">
