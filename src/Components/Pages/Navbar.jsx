@@ -5,6 +5,7 @@ import { AuthContext } from "./AuthProvider";
 import { onAuthStateChanged } from "firebase/auth";
 import auth from "../firebase.init";
 import Loading from "./Loading";
+import career from '../../assets/careerQuest.jpg'
 
 const Navbar = () => {
   const { user, logOut, updateUserProfile, setUser, loading } =
@@ -74,9 +75,9 @@ const Navbar = () => {
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
           to="/"
-          className="text-3xl md:text-4xl font-bold font"
+         
         >
-          <span className="text-[#E6533C] font-bold">G</span>oalPath
+          <img className="w-36" src={career} alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
