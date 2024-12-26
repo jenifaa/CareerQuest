@@ -35,11 +35,11 @@ const UpdateProfile = () => {
         <p className="text-center text-xl mt-4"></p>
       ) : (
         <div>
-          <div className="w-5/12 mx-auto">
+          <div className="md:w-5/12 mx-auto">
             <h2 className="text-3xl font-bold my-4">
               Name: {user.displayName}
             </h2>
-            <p className="text-3xl font-semibold my-4 flex gap-8 items-center">
+            <p className="text-3xl font-semibold my-4 md:flex gap-8 items-center">
               Profile Picture:{" "}
               {user.photoURL ? (
                 <img

@@ -6,9 +6,7 @@ import Career from "./Career";
 import { toast } from "react-toastify";
 
 const Home = () => {
-  toast('This is a message!', {
-    position: "bottom-right"
-  });
+  
   return (
     <div>
         <Helmet>

@@ -10,46 +10,48 @@ import { toast } from "react-toastify";
 
 
 const Register = () => {
-  const { newUser, setUser, updateUserProfile, signInWithGoogle } =
+  const { newUser, setUser, updateUserProfile, signInWithGoogle, setLoading } =
     useContext(AuthContext);
   const navigate = useNavigate();
-  const [error, setError] = useState([]);
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        
         navigate("/");
       })
       .catch((err) => {
         console.log("error", err);
       });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const photo = e.target.photo.value;
 
-   
     setError("");
     setSuccess(false);
     if (password.length < 6) {
       setError("Password Should be At-least 6 character long");
+      toast.error("Invalid password Information");
       return;
     }
     const passwordRegex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/;
     if (!passwordRegex.test(password)) {
       setError(
-        <>Password should contains : <br /> (1) At-least one uppercase,<br /> (2) one lowercase,<br /> (3) one number and <br /> (4 )one special character,</>
-        
+        <>
+          Password should contains : <br /> (1) At-least one uppercase,
+          <br /> (2) one lowercase,
+          <br /> (3) one number and <br /> (4 )one special character,
+        </>
         
       );
-       toast.error("Invalid Information")
-
+     
+      toast.error("Invalid password Information");
       return;
     }
 
@@ -57,26 +59,28 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        
+        toast.success("Registered Successfully");
         setSuccess(true);
-        toast.success('Registered Successfully')
-        updateUserProfile({ displayName: name, photoURL: photo })
-         
-       
+
+        updateUserProfile({ displayName: name, photoURL: photo });
+
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
         console.log("Error", err.message);
-
-        setSuccess(false);
+        // toast.error("Invalid Input.Please try again..");
+        setSuccess(false)
+        setLoading(false);
       });
+
+    
   };
   return (
     <div className="bg-base-200 pt-5">
       <Navbar></Navbar>
       <Helmet>
-            <title>CareerQuest | Register</title>
-        </Helmet>
+        <title>CareerQuest | Register</title>
+      </Helmet>
       <div className="hero  min-h-screen">
         <div className="card bg-base-100 lg:w-5/12 mx-auto">
           <h2 className="text-3xl font-bold my-5 pl-8">Register</h2>
@@ -145,7 +149,7 @@ const Register = () => {
             </p>
           </form>
           {error && <p className="text-red-600 px-4 pb-4">{error}</p>}
-          {success && <p className="text-green-600">SignUp is Successful</p>}
+          {/* {success && <p className="text-green-600">SignUp is Successful</p>} */}
           <div className="mb-2 ml-5  rounded-full lg:w-[38%] w-full">
             <button
               onClick={handleGoogleSignIn}

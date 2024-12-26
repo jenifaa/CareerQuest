@@ -1,16 +1,18 @@
 import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
-import { toast, ToastContainer } from "react-toastify";
-
+import { toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import icon from "../../assets/google.png";
+
 import { sendPasswordResetEmail } from "firebase/auth";
 import auth from "../firebase.init";
 import { Helmet } from "react-helmet";
 
 const Login = () => {
-  const { userLogin, setUser ,signInWithGoogle } = useContext(AuthContext);
+  const { userLogin, setUser ,signInWithGoogle ,setLoading} = useContext(AuthContext);
+  
+  const [success, setSuccess] = useState(false);
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
@@ -22,7 +24,7 @@ const Login = () => {
       });
   };
  
-  const [error, setError] = useState([]);
+  const [error, setError] = useState({});
   const emailRef = useRef();
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,13 +40,15 @@ const Login = () => {
         const user = result.user;
         setUser(user);
         toast.success("Login Successfully!!!");
+       
         navigate(location?.state ? location.state : "/");
        
         
       })
       .catch((err) => {
-        setError({ ...error, login: err.code });
-        toast.error("Invalid email or Password");
+        setError({ login: err.code }); 
+        toast.error("Invalid email or password"); 
+        
        
       });
   };
@@ -57,12 +61,13 @@ const Login = () => {
    else{
     sendPasswordResetEmail(auth, email)
     .then(() =>{
-      toast.error('please check your email')
+      toast.info('please check your email')
     })
    }
   }
   return (
     <div>
+     
       <Helmet>
             <title>CareerQuest | Login</title>
         </Helmet>
@@ -99,7 +104,7 @@ const Login = () => {
               />
               <button
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-12 top-[252px]"
+                className="absolute right-12 top-[250px] md:top-[252px]"
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye></FaEye>}
               </button>
@@ -122,7 +127,7 @@ const Login = () => {
               onClick={handleGoogleSignIn}
               className=" font-semibold flex justify-around items-center border-2 p-3 rounded-full "
             >
-              <img src={icon} alt="" className="w-8 mr-3" />
+              <img src={'./google.png'} alt="" className="w-8 mr-3" />
               <p>Sign In with Google</p>
             </button>
           </div>

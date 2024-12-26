@@ -15,15 +15,16 @@ const Offer = () => {
         <Helmet>
             <title>CareerQuery | Offers</title>
         </Helmet>
-      <div className="text-center my-5 mb-10">
+      <div className="text-center my-5">
         <h1 className="text-5xl font-bold my-4 flex items-center justify-center">
           Exclusive Offers <img className="w-16 ml-3" src={icon4} alt="" />
         </h1>
-        <p className="font text-xl">
+        <p className="font text-xl mb-16">
           Unlock Amazing Discounts & Deals Just for You!
         </p>{" "}
       </div>
-      <div className="grid md:grid-cols-10 my-5 items-center mt-10">
+      <hr />
+      <div className="grid md:grid-cols-10 my-5 items-center mt-16">
         <div className="md:col-span-4 text-3xl font-bold">
           Offer's for TeenAge Students
         </div>

@@ -17,7 +17,7 @@ const Navbar = () => {
   const isHomePage = location.pathname === "/";
 
   const links = (
-    <div className="bg-slate-700 text-white px-8 py-4 rounded-full">
+    <div className="bg-slate-700 text-white md:px-8 md:py-4 md:rounded-full">
       <NavLink className="mr-4 font-bold" to="/">
         Home
       </NavLink>
@@ -44,7 +44,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar bg-base-100 w-11/12 mx-auto pt-5 rounded-xl font2 py-5 px-3 mb-20">
+    <div className="navbar bg-base-100 md:w-11/12 mx-auto pt-5 rounded-xl font2 md:py-5 md:px-3 mb-20">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,7 +71,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link
-          data-aos="fade-up"
+          data-aos="fade-right"
           data-aos-duration="1000"
           data-aos-easing="ease-in-out"
           to="/"
@@ -98,13 +98,13 @@ const Navbar = () => {
 
       <div
         className="navbar-end flex items-center gap-3"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-easing="ease-in-out"
+        // data-aos="fade-left"
+        // data-aos-duration="1000"
+        // data-aos-easing="ease-in-out"
       >
         {user && user?.photoURL ? (
           <img
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full hidden md:flex"
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full  md:flex"
             src={user?.photoURL}
             title={user?.displayName || "User"}
             alt="User Profile"
@@ -114,7 +114,7 @@ const Navbar = () => {
         )}
 
         {user && user?.email ? (
-          <div className="flex items-center gap-3">
+          <div className="flex md:flex items-center  md:gap-3 sm:gap-2 flex-col sm:flex-row">
             <button
               onClick={logOut}
               className="px-4 py-2 bg-slate-700 text-white font-bold text-sm md:text-base"
@@ -129,7 +129,7 @@ const Navbar = () => {
             </Link>
           </div>
         ) : (
-          <>
+          <div className="flex md:flex items-center  md:gap-3 sm:gap-2 flex-col sm:flex-row">
             <Link
               className="px-4 py-2 bg-slate-700 text-white font-bold text-sm md:text-base"
               to="/register"
@@ -142,7 +142,7 @@ const Navbar = () => {
             >
               Login
             </Link>
-          </>
+          </div>
         )}
       </div>
     </div>
