@@ -1,28 +1,56 @@
-# Name of My Website : CareerQuest
+# **CareerQuest - Career Counseling Website**
 
-## Category : Assignment - 004
+**Category**: Assignment - 004  
+**Live Site URL**: [CareerQuest](https://career-counseling-a59f9.web.app)
 
-## Live site URL : career-counseling-a59f9.web.app
+---
 
-## Five features and characteristic of my website : 
+### **Overview:**
 
-### 1.User-Friendly Authentication:
+CareerQuest is an interactive career counseling platform designed to help individuals explore various career paths, interact with professional counselors, and receive tailored advice. The website features an intuitive and responsive interface, where users can register, log in, and browse through available services.
 
-My website allows users to easily register and log in, with the option to sign in using Google for quick access. It supports password validation with security rules ( minimum length, character diversity) and displays appropriate error messages.
+---
 
+### **Key Features:**
 
-### 2.Interactive Product and Service Display:
+1. **User-Friendly Authentication**:  
+   Users can easily register and log in using their email or Google for quick access. The system supports password validation with security rules (minimum length, character diversity) and error messages are shown if necessary.
 
-The website provides detailed service cards where users can view information such as service descriptions, pricing, availability, and counselor details. It also allows users to submit feedback or comments, enhancing engagement with the content.
+2. **Interactive Product and Service Display**:  
+   Service cards provide users with detailed information like service descriptions, pricing, availability, and counselor details. Users can also provide feedback or comments on each service.
 
-### 3.Dynamic and Personalized User Interface:
+3. **Dynamic and Personalized User Interface**:  
+   The Navbar dynamically updates based on the user’s authentication status, showing "LogOut" and "User" links for logged-in users. Additionally, it features an interactive modal for adding items to the cart and managing the wishlist.
 
-Features like the Navbar dynamically adjust to show different options based on the user's authentication status ( showing "LogOut" and "User" links for logged-in users). Additionally, it provides an interactive modal for adding items to the cart and managing items in a wishlist.
+4. **Mobile-Responsive Design**:  
+   The website is designed with a responsive layout, ensuring it adapts well to various screen sizes, including smaller devices. On smaller screens, the navigation menu is collapsible for a clean user experience.
 
-### 4.Mobile-Responsive Design:
+5. **Real-Time Data Management**:  
+   Real-time data is loaded from external sources with hooks like `useEffect` and `useLoaderData`, ensuring that users always see up-to-date information. User interactions, such as adding feedback or comments, are visible immediately after submission.
 
-The website is designed with a responsive layout, ensuring that it works well on various screen sizes, including small devices and medium-sized screens. The navigation menu is collapsible on smaller devices for a clean and accessible experience.
+---
 
-### 5.Real-Time Data Management:
+### **Technologies Used:**
+- **Frontend**: React, React Router
+- **Styling**: Tailwind CSS
+- **Authentication**: Firebase Authentication
+- **Deployment**: Firebase Hosting
 
-The website dynamically loads data from external sources using hooks like useEffect and useLoaderData, ensuring that users always see up-to-date information. It also allows for smooth interactions, such as adding comments or feedback that remain visible after submission.
+---
+
+### **Dependencies:**
+- `react`
+- `react-router-dom`
+- `firebase`
+- `tailwindcss`
+- `react-icons`
+- `react-toastify`
+
+---
+
+### **Installation Instructions:**
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/jenifaa/career-counseling.git
+   cd career-counseling
