@@ -1,6 +1,5 @@
 # **CareerQuest - Career Counseling Website**
-
-**Category**: Assignment - 004  
+ 
 **Live Site URL**: [CareerQuest](https://career-counseling-a59f9.web.app)
 
 ---
@@ -58,6 +57,13 @@ CareerQuest is an interactive career counseling platform designed to help indivi
 
 ```bash
 npm install
+```
+
+3.**Run the Project Locally:** To start the project on your local machine, use:
+
+```bash
+npm run dev
+```
 
 
 
