@@ -1,6 +1,6 @@
 # **CareerQuest - Career Counseling Website**
  
-**Live Site URL**: [CareerQuest]([https://jenifa-career-counseling.surge.sh])
+**Live Site URL**: [CareerQuest][https://jenifa-career-counseling.surge.sh]
 
 ---
 
