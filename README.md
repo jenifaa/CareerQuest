@@ -54,3 +54,8 @@ CareerQuest is an interactive career counseling platform designed to help indivi
    ```bash
    git clone https://github.com/jenifaa/career-counseling.git
    cd career-counseling
+Install Dependencies: To install the necessary dependencies for the project, run the following command in the root directory of your project:
+
+bash
+
+npm install
