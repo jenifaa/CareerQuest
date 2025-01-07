@@ -57,5 +57,9 @@ CareerQuest is an interactive career counseling platform designed to help indivi
 2. **Install Dependencies:** To install the necessary dependencies for the project, run the following command in the root directory of your project:
 
 ```bash
-
 npm install
+
+3. **Run the Project Locally:** To start the project on your local machine, use:
+
+```bash
+npm run dev
