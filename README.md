@@ -1,6 +1,6 @@
 # **CareerQuest - Career Counseling Website**
  
-**Live Site URL**: [CareerQuest](https://career-counseling-a59f9.web.app)
+**Live Site URL**: [CareerQuest]([https://jenifa-career-counseling.surge.sh])
 
 ---
 
@@ -9,6 +9,9 @@
 CareerQuest is an interactive career counseling platform designed to help individuals explore various career paths, interact with professional counselors, and receive tailored advice. The website features an intuitive and responsive interface, where users can register, log in, and browse through available services.
 
 ---
+## **📷 Screenshot**
+![Product Recommendation System Screenshot](https://i.ibb.co.com/nw6NxJC/project2.png)
+
 
 ### **Key Features:**
 
