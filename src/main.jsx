@@ -23,6 +23,7 @@ import Dashboard from "./Components/Pages/Dashboard";
 import AboutUs from "./Components/Pages/AboutUs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BlogPage from "./Components/Pages/BlogPage";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "blog",
+        element: <BlogPage></BlogPage>,
       },
     ],
   },
@@ -73,6 +78,7 @@ const router = createBrowserRouter([
     path: "login",
     element: <Login></Login>,
   },
+
   {
     path: "register",
     element: <Register></Register>,

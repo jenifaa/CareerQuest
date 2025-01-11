@@ -14,11 +14,11 @@ const Card = ({ card }) => {
   const [ratings, setRatings] = useState(rating);
   return (
     <div className="card bg-base-100 shadow-xl">
-      <figure className="px-5 pt-5">
+      <figure className="px-3 pt-3">
         <img
           src={image}
           alt={serviceName}
-          className="rounded-xl h-[300px] w-[250px]"
+          className="rounded-xl h-[230px] w-full object-cover"
         />
       </figure>
       <div className="card-body ">
@@ -42,7 +42,7 @@ const Card = ({ card }) => {
             to={`/card/${card.id}`}
             className="btn bg-slate-800 text-base-200"
           >
-            Learn More
+            View Details
           </Link>
         </div>
       </div>

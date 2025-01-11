@@ -27,6 +27,9 @@ const Navbar = () => {
       <NavLink className="mr-4 font-bold" to="/dashboard">
         DashBoard
       </NavLink>
+      <NavLink className="mr-4 font-bold" to="/blog">
+        Our Blog
+      </NavLink>
       {user && user?.email ? (
         <>
           <NavLink className=" font-bold" to="/offer">
@@ -44,7 +47,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar bg-base-100 md:w-11/12 mx-auto pt-5 rounded-xl font2 md:py-5 md:px-3 mb-20">
+    <div className="navbar bg-base-100 md:w-11/12 mx-auto pt-3 rounded-xl font2 md:py-5 md:px-3 mb-3">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
