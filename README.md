@@ -1,13 +1,8 @@
 # **CareerQuest - Career Counseling Website**
  
-**Live Site URL**: https://jenifa-career-counseling.surge.sh
-## Live site URL : career-counseling-a59f9.web.app
+### User-Friendly Authentication:# **CareerQuest - Career Counseling Website**
 
-## Five features and characteristic of my website :
-
-### 1.User-Friendly Authentication:# **CareerQuest - Career Counseling Website**
-
-**Live Site URL**: [CareerQuest](https://career-counseling-a59f9.web.app)
+**Live Site URL**: [CareerQuest](https://jenifa-career-counseling.surge.sh)
 =======
 ---
 
