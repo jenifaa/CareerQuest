@@ -18,11 +18,9 @@ CareerQuest is an interactive career counseling platform designed to help indivi
 ---
 ## **📷 Screenshot**
 ![Product Recommendation System Screenshot](https://i.ibb.co.com/nw6NxJC/project2.png)
->>>>>>> 269c6a9c0978c53b2ef0a66b612b672e2f626c00
 
 ---
 
-<<<<<<< HEAD
 ### **Overview:**
 
 CareerQuest is an interactive career counseling platform designed to help individuals explore various career paths, interact with professional counselors, and receive tailored advice. The website features an intuitive and responsive interface, where users can register, log in, and browse through available services.
@@ -143,6 +141,4 @@ npm run dev
 ```
 
 
-
->>>>>>> 269c6a9c0978c53b2ef0a66b612b672e2f626c00
 
