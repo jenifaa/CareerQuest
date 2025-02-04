@@ -1,8 +1,6 @@
 # **CareerQuest - Career Counseling Website**
  
-**Live Site URL**: [CareerQuest][https://jenifa-career-counseling.surge.sh]
-
-<<<<<<< HEAD
+**Live Site URL**: https://jenifa-career-counseling.surge.sh
 ## Live site URL : career-counseling-a59f9.web.app
 
 ## Five features and characteristic of my website :
